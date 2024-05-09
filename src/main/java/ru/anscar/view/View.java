@@ -1,10 +1,9 @@
 package ru.anscar.view;
 
-
-import java.nio.file.Path;
+import java.util.List;
 import java.util.Map;
 
 public interface View {
 
-    Map<String, Path[]> getParametersForUser();
+    List<Map<String, String[]>> getParametersForUser();
 }

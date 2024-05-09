@@ -6,8 +6,7 @@ import ru.anscar.entity.ConsoleReader;
 import ru.anscar.view.ConsoleView;
 import ru.anscar.view.GuiView;
 import ru.anscar.view.View;
-
-import java.nio.file.Path;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -32,7 +31,7 @@ public class ControllerView {
         }
     }
 
-    public Map<String, Path[]> getParametersEnterUserInView(View view) {
+    public List<Map<String, String[]>> getParametersEnterUserInView(View view) {
         return view.getParametersForUser();
     }
 }

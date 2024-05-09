@@ -31,4 +31,17 @@ public class CommunicationWithUser {
     public static final String INPUT_PATH_TO_ENCODE_FILE = "Введите путь до декодированного файла";
 
     public static final String INPUT_PATH_TO_OUTPUT_FILE = "Введите путь до файла в который записать результат";
+    public static final String SELECT_TYPE_ENCODE_FILE = String.format("""
+            Выберите метод раскодировки файла:\s
+            Введите: %s для использования шифра Цезаря.\s
+            Введите: %s для использования brute-force.\s
+            Введите: %S для использования статистического анализа""",ValueParametersView.TYPE_ENCODE_CAESAR,
+            ValueParametersView.TYPE_ENCODE_BRUTE_FORCE,ValueParametersView.TYPE_ENCODE_STATISTICAL_ANALYSIS);
+    public static final String REPEAT_INPUT_TYPE_ENCODING = String.format("""
+            Проверьте правильность выбора метода дешифровки файла.
+            Введите: %s для использования шифра Цезаря.\s
+            Введите: %s для использования brute-force.\s
+            Введите: %S для использования статистического анализа""",ValueParametersView.TYPE_ENCODE_CAESAR,
+            ValueParametersView.TYPE_ENCODE_BRUTE_FORCE,ValueParametersView.TYPE_ENCODE_STATISTICAL_ANALYSIS);
+
 }

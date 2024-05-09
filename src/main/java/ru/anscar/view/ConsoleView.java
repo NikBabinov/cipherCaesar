@@ -6,24 +6,60 @@ import ru.anscar.constants.ValueParametersView;
 import ru.anscar.entity.ConsoleReader;
 
 import java.nio.file.Path;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class ConsoleView implements View {
 
     @Override
-    public Map<String, Path[]> getParametersForUser() {
-        Map<String,Path[]> parametersFromUser = new HashMap<>();
+    public List<Map<String, String[]>> getParametersForUser() {
+        List<Map<String, String[]>> getParametersForUser = new ArrayList<>();
+        Map<String, String[]> getFilePathFromUser = new HashMap<>();
+        Map<String, String[]> getTypeEncodingFileFromUser = new HashMap<>();
 
         String target = getSelectTarget();
-        Path[] path = getPath(target);
-        parametersFromUser.put(target,path);
+        String[] path = getPath(target);
 
-        return parametersFromUser;
+        if (target.equalsIgnoreCase(ValueParametersView.TARGET_DECODE_TO_STRING)) {
+            String[] typeEncoding = new String[1];
+            typeEncoding[0] = getTypeEncoding();
+            getTypeEncodingFileFromUser.put(ValueParametersView.KEY_TYPE_ENCODE, typeEncoding);
+        }
+
+        getFilePathFromUser.put(target, path);
+
+        getParametersForUser.add(getFilePathFromUser);
+        getParametersForUser.add(getTypeEncodingFileFromUser);
+
+        return getParametersForUser;
     }
 
-    private Path[] getPath(String target) {
+    private String getTypeEncoding() {
+        System.out.println(CommunicationWithUser.SELECT_TYPE_ENCODE_FILE);
+        Scanner console = ConsoleReader.getInstance();
+        try {
+            String typeEncodeFile = console.nextLine();
+            while (true) {
+                if (typeEncodeFile.equalsIgnoreCase(ValueParametersView.TYPE_ENCODE_CAESAR)) {
+                    return ValueParametersView.VALUE_TYPE_ENCODE_CAESAR;
+
+                }
+                if (typeEncodeFile.equalsIgnoreCase(ValueParametersView.TYPE_ENCODE_BRUTE_FORCE)) {
+                    return ValueParametersView.VALUE_TYPE_BRUTE_FORCE;
+
+                }
+                if (typeEncodeFile.equalsIgnoreCase(ValueParametersView.TYPE_ENCODE_STATISTICAL_ANALYSIS)) {
+                    return ValueParametersView.VALUE_TYPE_STATISTICAL_ANALYSIS;
+                }
+
+                System.out.println(CommunicationWithUser.REPEAT_INPUT_TYPE_ENCODING);
+                typeEncodeFile = console.nextLine();
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private String[] getPath(String target) {
         System.out.println(CommunicationWithUser.SELECT_DEFAULT_OR_ENTER_PATH_TO_FILE);
         Scanner console = ConsoleReader.getInstance();
         try {
@@ -44,55 +80,55 @@ public class ConsoleView implements View {
         }
     }
 
-    private Path[] getPathFromUser(String target) {
+    private String[] getPathFromUser(String target) {
 
         if (target.equalsIgnoreCase(ValueParametersView.DECODE_FIlE)) {
-            Path encodeFile = createPathEncodeFile();
-            Path outputFile = createPathOutputFile();
-            return new Path[]{encodeFile, outputFile};
+            String encodeFile = createPathEncodeFile();
+            String outputFile = createPathOutputFile();
+            return new String[]{encodeFile, outputFile};
         }
 
-        Path decodeFile = createPathDecodeFile();
-        Path outputFile = createPathOutputFile();
-        return new Path[]{decodeFile, outputFile};
+        String decodeFile = createPathDecodeFile();
+        String outputFile = createPathOutputFile();
+        return new String[]{decodeFile, outputFile};
     }
 
-    private Path createPathOutputFile() {
+    private String createPathOutputFile() {
         System.out.println(CommunicationWithUser.INPUT_PATH_TO_OUTPUT_FILE);
         Scanner console = ConsoleReader.getInstance();
         return createPath(console);
     }
 
-    private Path createPathDecodeFile() {
+    private String createPathDecodeFile() {
         System.out.println(CommunicationWithUser.INPUT_PATH_TO_DECODE_FILE);
         Scanner console = ConsoleReader.getInstance();
         return createPath(console);
     }
 
-    private Path createPathEncodeFile() {
+    private String createPathEncodeFile() {
         System.out.println(CommunicationWithUser.INPUT_PATH_TO_ENCODE_FILE);
         Scanner console = ConsoleReader.getInstance();
         return createPath(console);
     }
 
-    private Path createPath(Scanner console) {
+    private String createPath(Scanner console) {
         try {
             Path path = Path.of(console.nextLine());
-            return path.isAbsolute() ? path : path.toAbsolutePath();
-        }catch (Exception e){
+            return path.isAbsolute() ? path.toString() : path.toAbsolutePath().toString();
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
-    private Path[] getDefaultPath(String target) {
-        Path encodeFile = Path.of(PathToDefaultFile.DEFAULT_PATH_TO_ENCODE_FILE).toAbsolutePath();
-        Path decodeFile = Path.of(PathToDefaultFile.DEFAULT_PATH_TO_DECODE_FILE).toAbsolutePath();
-        Path outputFile = Path.of(PathToDefaultFile.DEFAULT_PATH_TO_OUTPUT_FILE).toAbsolutePath();
+    private String[] getDefaultPath(String target) {
+        String encodeFile = Path.of(PathToDefaultFile.DEFAULT_PATH_TO_ENCODE_FILE).toAbsolutePath().toString();
+        String decodeFile = Path.of(PathToDefaultFile.DEFAULT_PATH_TO_DECODE_FILE).toAbsolutePath().toString();
+        String outputFile = Path.of(PathToDefaultFile.DEFAULT_PATH_TO_OUTPUT_FILE).toAbsolutePath().toString();
 
         if (target.equalsIgnoreCase(ValueParametersView.DECODE_FIlE)) {
-            return new Path[]{encodeFile, outputFile};
+            return new String[]{encodeFile, outputFile};
         }
-        return new Path[]{decodeFile, outputFile};
+        return new String[]{decodeFile, outputFile};
     }
 
     private String getSelectTarget() {
@@ -104,7 +140,7 @@ public class ConsoleView implements View {
             while (true) {
                 if (target.equalsIgnoreCase(ValueParametersView.ENCODE_FIlE) ||
                         target.equalsIgnoreCase(ValueParametersView.DECODE_FIlE)) {
-                    return target;
+                    return targetDecoding(target);
                 }
                 System.out.println(CommunicationWithUser.REPEAT_INPUT_GET_TARGET);
                 target = console.nextLine();
@@ -113,5 +149,13 @@ public class ConsoleView implements View {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private String targetDecoding(String target) {
+        return switch (target) {
+            case ValueParametersView.ENCODE_FIlE -> ValueParametersView.TARGET_ENCODE_TO_STRING;
+            case ValueParametersView.DECODE_FIlE -> ValueParametersView.TARGET_DECODE_TO_STRING;
+            default -> null;
+        };
     }
 }

@@ -1,11 +1,11 @@
 package ru.anscar.view;
 
-import java.nio.file.Path;
+import java.util.List;
 import java.util.Map;
 
 public class GuiView implements View {
     @Override
-    public Map<String, Path[]> getParametersForUser() {
+    public List<Map<String, String[]>> getParametersForUser() {
         return null;
     }
 }

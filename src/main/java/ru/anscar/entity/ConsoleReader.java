@@ -13,7 +13,9 @@ public class ConsoleReader implements Serializable {
         return INSTANCE;
     }
 
-    public static void closeConsole(){
-        INSTANCE.close();
-    }
+// --Commented out by Inspection START (09.05.2024 23:56):
+//    public static void closeConsole(){
+//        INSTANCE.close();
+//    }
+// --Commented out by Inspection STOP (09.05.2024 23:56)
 }
