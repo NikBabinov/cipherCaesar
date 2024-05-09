@@ -1,21 +1,24 @@
 package ru.anscar.constants;
 
 public class CommunicationWithUser {
-    public static final String TYPE_VIEW = "Вы желаете продолжить работу в режиме консоли? \n " +
-            "Введите: Да или Нет";
+    public static final String TYPE_VIEW = String.format("""
+            Пожалуйста выберите необходимое действие:\s
+            Введите %s если хотите продолжить работу в консоли.\s
+            Введите %s если хотите перейти в GUI.\s""", ValueParametersView.TERMINAL_WORK, ValueParametersView.GUI_WORK);
 
     public static final String REPEAT_INPUT = String.format("Проверьте правильность ввода. \n" +
-            "Введите: \"%s\" чтобы остаться в консоли, или \"%s\" для перехода в графический режим", RequestUser.REQUEST_YES, RequestUser.REQUEST_NOT);
+            "Введите: %s чтобы остаться в консоли, или %s для перехода в графический режим.", ValueParametersView.TERMINAL_WORK,
+            ValueParametersView.GUI_WORK);
 
     public static final String SELECT_TARGET_FROM_USER = String.format("""
             Пожалуйста выберите необходимое действие:\s
-            Введите %s если хотите кодировать файл\s
-            Введите %s если хотите раскодировать файл\s""", ValueParametersView.ENCODE_FIlE, ValueParametersView.DECODE_FIlE);
+            Введите %s если хотите кодировать файл.\s
+            Введите %s если хотите раскодировать файл.\s""", ValueParametersView.ENCODE_FIlE, ValueParametersView.DECODE_FIlE);
 
     public static final String REPEAT_INPUT_GET_TARGET = String.format("""
-            Проверьте правильность выбора задачи\s
-            Введите %s если хотите кодировать файл\s
-            Введите %s если хотите раскодировать файл\s""", ValueParametersView.ENCODE_FIlE, ValueParametersView.DECODE_FIlE);
+            Проверьте правильность выбора задачи:\s
+            Введите %s если хотите кодировать файл.\s
+            Введите %s если хотите раскодировать файл.\s""", ValueParametersView.ENCODE_FIlE, ValueParametersView.DECODE_FIlE);
 
     public static final String SELECT_DEFAULT_OR_ENTER_PATH_TO_FILE = String.format("""
             Пожалуйста выберите необходимое действие:\s
@@ -35,13 +38,13 @@ public class CommunicationWithUser {
             Выберите метод раскодировки файла:\s
             Введите: %s для использования шифра Цезаря.\s
             Введите: %s для использования brute-force.\s
-            Введите: %S для использования статистического анализа""",ValueParametersView.TYPE_ENCODE_CAESAR,
+            Введите: %S для использования статистического анализа.""",ValueParametersView.TYPE_ENCODE_CAESAR,
             ValueParametersView.TYPE_ENCODE_BRUTE_FORCE,ValueParametersView.TYPE_ENCODE_STATISTICAL_ANALYSIS);
     public static final String REPEAT_INPUT_TYPE_ENCODING = String.format("""
             Проверьте правильность выбора метода дешифровки файла.
             Введите: %s для использования шифра Цезаря.\s
             Введите: %s для использования brute-force.\s
-            Введите: %S для использования статистического анализа""",ValueParametersView.TYPE_ENCODE_CAESAR,
+            Введите: %S для использования статистического анализа.""",ValueParametersView.TYPE_ENCODE_CAESAR,
             ValueParametersView.TYPE_ENCODE_BRUTE_FORCE,ValueParametersView.TYPE_ENCODE_STATISTICAL_ANALYSIS);
 
 }

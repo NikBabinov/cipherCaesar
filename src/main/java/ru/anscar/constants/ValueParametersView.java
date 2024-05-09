@@ -7,6 +7,8 @@ public class ValueParametersView {
     private static final String two = "2";
 
     private static final String three = "3";
+    public static final String TERMINAL_WORK = one;
+    public static final String GUI_WORK = two;
 
     public static final String ENCODE_FIlE = one;
     public static final String DECODE_FIlE = two;
