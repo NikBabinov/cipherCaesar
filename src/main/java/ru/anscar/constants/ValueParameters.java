@@ -1,7 +1,6 @@
 package ru.anscar.constants;
 
-public class ValueParametersView {
-
+public class ValueParameters {
 
     private static final String one = "1";
     private static final String two = "2";

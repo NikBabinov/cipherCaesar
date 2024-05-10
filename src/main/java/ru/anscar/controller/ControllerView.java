@@ -1,7 +1,7 @@
 package ru.anscar.controller;
 
 import ru.anscar.constants.CommunicationWithUser;
-import ru.anscar.constants.ValueParametersView;
+import ru.anscar.constants.ValueParameters;
 import ru.anscar.entity.ConsoleReader;
 import ru.anscar.view.ConsoleView;
 import ru.anscar.view.GuiView;
@@ -17,10 +17,10 @@ public class ControllerView {
         try {
             String viewMode = console.nextLine();
             while (true) {
-                if (viewMode.equalsIgnoreCase(ValueParametersView.TERMINAL_WORK)) {
+                if (viewMode.equalsIgnoreCase(ValueParameters.TERMINAL_WORK)) {
                     return new ConsoleView();
                 }
-                if (viewMode.equalsIgnoreCase(ValueParametersView.GUI_WORK)) {
+                if (viewMode.equalsIgnoreCase(ValueParameters.GUI_WORK)) {
                     return new GuiView();
                 }
                 System.out.println(CommunicationWithUser.REPEAT_INPUT);

@@ -2,7 +2,7 @@ package ru.anscar.view;
 
 import ru.anscar.constants.CommunicationWithUser;
 import ru.anscar.constants.PathToDefaultFile;
-import ru.anscar.constants.ValueParametersView;
+import ru.anscar.constants.ValueParameters;
 import ru.anscar.entity.ConsoleReader;
 
 import java.nio.file.Path;
@@ -19,10 +19,10 @@ public class ConsoleView implements View {
         String target = getSelectTarget();
         String[] path = getPath(target);
 
-        if (target.equalsIgnoreCase(ValueParametersView.TARGET_DECODE_TO_STRING)) {
+        if (target.equalsIgnoreCase(ValueParameters.TARGET_DECODE_TO_STRING)) {
             String[] typeEncoding = new String[1];
             typeEncoding[0] = getTypeEncoding();
-            getTypeEncodingFileFromUser.put(ValueParametersView.KEY_TYPE_ENCODE, typeEncoding);
+            getTypeEncodingFileFromUser.put(ValueParameters.KEY_TYPE_ENCODE, typeEncoding);
         }
 
         getFilePathFromUser.put(target, path);
@@ -39,16 +39,16 @@ public class ConsoleView implements View {
         try {
             String typeEncodeFile = console.nextLine();
             while (true) {
-                if (typeEncodeFile.equalsIgnoreCase(ValueParametersView.TYPE_ENCODE_CAESAR)) {
-                    return ValueParametersView.VALUE_TYPE_ENCODE_CAESAR;
+                if (typeEncodeFile.equalsIgnoreCase(ValueParameters.TYPE_ENCODE_CAESAR)) {
+                    return ValueParameters.VALUE_TYPE_ENCODE_CAESAR;
 
                 }
-                if (typeEncodeFile.equalsIgnoreCase(ValueParametersView.TYPE_ENCODE_BRUTE_FORCE)) {
-                    return ValueParametersView.VALUE_TYPE_BRUTE_FORCE;
+                if (typeEncodeFile.equalsIgnoreCase(ValueParameters.TYPE_ENCODE_BRUTE_FORCE)) {
+                    return ValueParameters.VALUE_TYPE_BRUTE_FORCE;
 
                 }
-                if (typeEncodeFile.equalsIgnoreCase(ValueParametersView.TYPE_ENCODE_STATISTICAL_ANALYSIS)) {
-                    return ValueParametersView.VALUE_TYPE_STATISTICAL_ANALYSIS;
+                if (typeEncodeFile.equalsIgnoreCase(ValueParameters.TYPE_ENCODE_STATISTICAL_ANALYSIS)) {
+                    return ValueParameters.VALUE_TYPE_STATISTICAL_ANALYSIS;
                 }
 
                 System.out.println(CommunicationWithUser.REPEAT_INPUT_TYPE_ENCODING);
@@ -65,10 +65,10 @@ public class ConsoleView implements View {
         try {
             String selectPath = console.nextLine();
             while (true) {
-                if (selectPath.equalsIgnoreCase(ValueParametersView.DEFAULT_PATH)) {
+                if (selectPath.equalsIgnoreCase(ValueParameters.DEFAULT_PATH)) {
                     return getDefaultPath(target);
                 }
-                if (selectPath.equalsIgnoreCase(ValueParametersView.ENTER_USER_PATH)) {
+                if (selectPath.equalsIgnoreCase(ValueParameters.ENTER_USER_PATH)) {
                     return getPathFromUser(target);
                 }
                 System.out.println(CommunicationWithUser.REPEAT_INPUT_GET_PATH);
@@ -82,7 +82,7 @@ public class ConsoleView implements View {
 
     private String[] getPathFromUser(String target) {
 
-        if (target.equalsIgnoreCase(ValueParametersView.DECODE_FIlE)) {
+        if (target.equalsIgnoreCase(ValueParameters.DECODE_FIlE)) {
             String encodeFile = createPathEncodeFile();
             String outputFile = createPathOutputFile();
             return new String[]{encodeFile, outputFile};
@@ -125,7 +125,7 @@ public class ConsoleView implements View {
         String decodeFile = Path.of(PathToDefaultFile.DEFAULT_PATH_TO_DECODE_FILE).toAbsolutePath().toString();
         String outputFile = Path.of(PathToDefaultFile.DEFAULT_PATH_TO_OUTPUT_FILE).toAbsolutePath().toString();
 
-        if (target.equalsIgnoreCase(ValueParametersView.DECODE_FIlE)) {
+        if (target.equalsIgnoreCase(ValueParameters.DECODE_FIlE)) {
             return new String[]{encodeFile, outputFile};
         }
         return new String[]{decodeFile, outputFile};
@@ -138,9 +138,9 @@ public class ConsoleView implements View {
             String target = console.nextLine();
             System.out.println(target);
             while (true) {
-                if (target.equalsIgnoreCase(ValueParametersView.ENCODE_FIlE) ||
-                        target.equalsIgnoreCase(ValueParametersView.DECODE_FIlE)) {
-                    return targetDecoding(target);
+                if (target.equalsIgnoreCase(ValueParameters.ENCODE_FIlE) ||
+                        target.equalsIgnoreCase(ValueParameters.DECODE_FIlE)) {
+                    return targetDecodingToString(target);
                 }
                 System.out.println(CommunicationWithUser.REPEAT_INPUT_GET_TARGET);
                 target = console.nextLine();
@@ -151,10 +151,10 @@ public class ConsoleView implements View {
         }
     }
 
-    private String targetDecoding(String target) {
+    private String targetDecodingToString(String target) {
         return switch (target) {
-            case ValueParametersView.ENCODE_FIlE -> ValueParametersView.TARGET_ENCODE_TO_STRING;
-            case ValueParametersView.DECODE_FIlE -> ValueParametersView.TARGET_DECODE_TO_STRING;
+            case ValueParameters.ENCODE_FIlE -> ValueParameters.TARGET_ENCODE_TO_STRING;
+            case ValueParameters.DECODE_FIlE -> ValueParameters.TARGET_DECODE_TO_STRING;
             default -> null;
         };
     }
