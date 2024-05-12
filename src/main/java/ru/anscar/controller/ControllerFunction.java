@@ -16,7 +16,8 @@ public class ControllerFunction {
         String pathInputFile = getPathToInputFile(parametersEnterUserInView);
         String pathOutputFile = getPathToOutputFile(parametersEnterUserInView);
 
-        return getTypeFunction(target, typeEncode, pathInputFile, pathOutputFile,keyEncode);
+        System.out.println("getTypeEncode :" + typeEncode + " getTarget: " + target + " getPathInputFile: " + pathInputFile + " getPathOutputFile: " + pathOutputFile + " getKeyEncode" + keyEncode);
+        return getTypeFunction(target, typeEncode, pathInputFile, pathOutputFile, keyEncode);
     }
 
     private String getKeyEncode(List<Map<String, String[]>> parametersEnterUserInView) {
@@ -27,12 +28,12 @@ public class ControllerFunction {
                 }
             }
         }
-        return "0";
+        return null;
     }
 
-    private Function getTypeFunction(String target, String typeEncode, String pathInputFile, String pathOutputFile,String keyEncode) {
+    private Function getTypeFunction(String target, String typeEncode, String pathInputFile, String pathOutputFile, String keyEncode) {
         if (target.equalsIgnoreCase(ValueParameters.TARGET_ENCODE_TO_STRING)) {
-            return new CipherCaesarEncode(keyEncode,pathInputFile, pathOutputFile);
+            return new CipherCaesarEncode(keyEncode, pathInputFile, pathOutputFile);
         }
         return switch (typeEncode) {
             case ValueParameters.VALUE_TYPE_BRUTE_FORCE -> new BrutForceDecode(pathInputFile, pathOutputFile);

@@ -17,11 +17,11 @@ public class ConsoleView implements View {
         Map<String, String[]> getTypeEncodingFileFromUser = new HashMap<>();
 
         String target = getSelectTarget();
-        String[] typeEncoding = getTypeEncoding(target);
-        String[] path = getPath(target);
+        String[] typeAndKeyEncoding = getTypeEncoding(target);
+        String[] pathInputOutput = getPath(target);
 
-        getFilePathFromUser.put(target, path);
-        getTypeEncodingFileFromUser.put(ValueParameters.KEY_TYPE_ENCODE, typeEncoding);
+        getFilePathFromUser.put(target, pathInputOutput);
+        getTypeEncodingFileFromUser.put(ValueParameters.KEY_TYPE_ENCODE, typeAndKeyEncoding);
 
         getParametersForUser.add(getFilePathFromUser);
         getParametersForUser.add(getTypeEncodingFileFromUser);
@@ -43,7 +43,8 @@ public class ConsoleView implements View {
                 if (target.equalsIgnoreCase(ValueParameters.TARGET_DECODE_TO_STRING)) {
 
                     if (typeEncodeFile.equalsIgnoreCase(ValueParameters.TYPE_ENCODE_CAESAR)) {
-                        return new String[]{ValueParameters.VALUE_TYPE_ENCODE_CAESAR};
+                        String keyEncoding = getKeyEncoding(ValueParameters.VALUE_TYPE_ENCODE_CAESAR);
+                        return new String[]{ValueParameters.VALUE_TYPE_ENCODE_CAESAR,keyEncoding};
                     }
                     if (typeEncodeFile.equalsIgnoreCase(ValueParameters.TYPE_ENCODE_BRUTE_FORCE)) {
                         return new String[]{ValueParameters.VALUE_TYPE_BRUTE_FORCE};
@@ -57,7 +58,6 @@ public class ConsoleView implements View {
                     if (typeEncodeFile.equalsIgnoreCase(ValueParameters.TYPE_ENCODE_CAESAR)) {
                         String keyEncoding = getKeyEncoding(ValueParameters.VALUE_TYPE_ENCODE_CAESAR);
                         return new String[]{ValueParameters.VALUE_TYPE_ENCODE_CAESAR,keyEncoding};
-
                     }
                 }
 
