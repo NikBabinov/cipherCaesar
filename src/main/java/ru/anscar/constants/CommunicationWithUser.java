@@ -7,7 +7,7 @@ public class CommunicationWithUser {
             Введите %s если хотите перейти в GUI.\s""", ValueParameters.TERMINAL_WORK, ValueParameters.GUI_WORK);
 
     public static final String REPEAT_INPUT = String.format("Проверьте правильность ввода. \n" +
-            "Введите: %s чтобы остаться в консоли, или %s для перехода в графический режим.", ValueParameters.TERMINAL_WORK,
+                    "Введите: %s чтобы остаться в консоли, или %s для перехода в графический режим.", ValueParameters.TERMINAL_WORK,
             ValueParameters.GUI_WORK);
 
     public static final String SELECT_TARGET_FROM_USER = String.format("""
@@ -35,16 +35,29 @@ public class CommunicationWithUser {
 
     public static final String INPUT_PATH_TO_OUTPUT_FILE = "Введите путь до файла в который записать результат";
     public static final String SELECT_TYPE_ENCODE_FILE = String.format("""
-            Выберите метод раскодировки файла:\s
-            Введите: %s для использования шифра Цезаря.\s
-            Введите: %s для использования brute-force.\s
-            Введите: %S для использования статистического анализа.""", ValueParameters.TYPE_ENCODE_CAESAR,
+                    Выберите метод раскодировки файла:\s
+                    Введите: %s для использования шифра Цезаря.\s
+                    Введите: %s для использования brute-force.\s
+                    Введите: %S для использования статистического анализа.""", ValueParameters.TYPE_ENCODE_CAESAR,
             ValueParameters.TYPE_ENCODE_BRUTE_FORCE, ValueParameters.TYPE_ENCODE_STATISTICAL_ANALYSIS);
     public static final String REPEAT_INPUT_TYPE_ENCODING = String.format("""
-            Проверьте правильность выбора метода дешифровки файла.
-            Введите: %s для использования шифра Цезаря.\s
-            Введите: %s для использования brute-force.\s
-            Введите: %S для использования статистического анализа.""", ValueParameters.TYPE_ENCODE_CAESAR,
+                    Проверьте правильность выбора метода дешифровки файла.
+                    Введите: %s для использования шифра Цезаря.\s
+                    Введите: %s для использования brute-force.\s
+                    Введите: %S для использования статистического анализа.""", ValueParameters.TYPE_ENCODE_CAESAR,
             ValueParameters.TYPE_ENCODE_BRUTE_FORCE, ValueParameters.TYPE_ENCODE_STATISTICAL_ANALYSIS);
 
+    public static final String SELECT_METHOD_ENCODE_FILE = String.format("""
+            Выберите метод кодировки файла:\s
+            Введите: %s для использования шифра Цезаря.\s""", ValueParameters.TYPE_ENCODE_CAESAR);
+
+    public static final String INPUT_KEY_ENCODE = String.format("""
+                    Введите цифровой ключ кодировки файла,
+                    ключ должен соответствовать диапазону от %s до %s""", ValueParameters.MIN_NUMB_CIPHER_CAESAR,
+            ValueParameters.MAX_NUMB_CIPHER_CAESAR);
+
+    public static final String REPEAT_INPUT_KEY = String.format("""
+                    пожалуйста проверьте правильность ввода ключа:
+                    ключ должен соответствовать диапазону от %s до %s""", ValueParameters.MIN_NUMB_CIPHER_CAESAR,
+            ValueParameters.MAX_NUMB_CIPHER_CAESAR);
 }

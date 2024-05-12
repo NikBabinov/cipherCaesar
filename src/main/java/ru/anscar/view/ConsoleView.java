@@ -17,15 +17,11 @@ public class ConsoleView implements View {
         Map<String, String[]> getTypeEncodingFileFromUser = new HashMap<>();
 
         String target = getSelectTarget();
+        String[] typeEncoding = getTypeEncoding(target);
         String[] path = getPath(target);
 
-        if (target.equalsIgnoreCase(ValueParameters.TARGET_DECODE_TO_STRING)) {
-            String[] typeEncoding = new String[1];
-            typeEncoding[0] = getTypeEncoding();
-            getTypeEncodingFileFromUser.put(ValueParameters.KEY_TYPE_ENCODE, typeEncoding);
-        }
-
         getFilePathFromUser.put(target, path);
+        getTypeEncodingFileFromUser.put(ValueParameters.KEY_TYPE_ENCODE, typeEncoding);
 
         getParametersForUser.add(getFilePathFromUser);
         getParametersForUser.add(getTypeEncodingFileFromUser);
@@ -33,22 +29,36 @@ public class ConsoleView implements View {
         return getParametersForUser;
     }
 
-    private String getTypeEncoding() {
-        System.out.println(CommunicationWithUser.SELECT_TYPE_ENCODE_FILE);
+    private String[] getTypeEncoding(String target) {
+        if (target.equalsIgnoreCase(ValueParameters.TARGET_DECODE_TO_STRING)) {
+            System.out.println(CommunicationWithUser.SELECT_TYPE_ENCODE_FILE);
+        }
+        if (target.equalsIgnoreCase(ValueParameters.TARGET_ENCODE_TO_STRING)) {
+            System.out.println(CommunicationWithUser.SELECT_METHOD_ENCODE_FILE);
+        }
         Scanner console = ConsoleReader.getInstance();
         try {
             String typeEncodeFile = console.nextLine();
             while (true) {
-                if (typeEncodeFile.equalsIgnoreCase(ValueParameters.TYPE_ENCODE_CAESAR)) {
-                    return ValueParameters.VALUE_TYPE_ENCODE_CAESAR;
+                if (target.equalsIgnoreCase(ValueParameters.TARGET_DECODE_TO_STRING)) {
 
+                    if (typeEncodeFile.equalsIgnoreCase(ValueParameters.TYPE_ENCODE_CAESAR)) {
+                        return new String[]{ValueParameters.VALUE_TYPE_ENCODE_CAESAR};
+                    }
+                    if (typeEncodeFile.equalsIgnoreCase(ValueParameters.TYPE_ENCODE_BRUTE_FORCE)) {
+                        return new String[]{ValueParameters.VALUE_TYPE_BRUTE_FORCE};
+                    }
+                    if (typeEncodeFile.equalsIgnoreCase(ValueParameters.TYPE_ENCODE_STATISTICAL_ANALYSIS)) {
+                        return new String[]{ValueParameters.VALUE_TYPE_STATISTICAL_ANALYSIS};
+                    }
                 }
-                if (typeEncodeFile.equalsIgnoreCase(ValueParameters.TYPE_ENCODE_BRUTE_FORCE)) {
-                    return ValueParameters.VALUE_TYPE_BRUTE_FORCE;
+                if (target.equalsIgnoreCase(ValueParameters.TARGET_ENCODE_TO_STRING)) {
 
-                }
-                if (typeEncodeFile.equalsIgnoreCase(ValueParameters.TYPE_ENCODE_STATISTICAL_ANALYSIS)) {
-                    return ValueParameters.VALUE_TYPE_STATISTICAL_ANALYSIS;
+                    if (typeEncodeFile.equalsIgnoreCase(ValueParameters.TYPE_ENCODE_CAESAR)) {
+                        String keyEncoding = getKeyEncoding(ValueParameters.VALUE_TYPE_ENCODE_CAESAR);
+                        return new String[]{ValueParameters.VALUE_TYPE_ENCODE_CAESAR,keyEncoding};
+
+                    }
                 }
 
                 System.out.println(CommunicationWithUser.REPEAT_INPUT_TYPE_ENCODING);
@@ -57,6 +67,29 @@ public class ConsoleView implements View {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private String getKeyEncoding(String typeEncodingFile) {
+        if (typeEncodingFile.equalsIgnoreCase(ValueParameters.VALUE_TYPE_ENCODE_CAESAR)) {
+            System.out.println(CommunicationWithUser.INPUT_KEY_ENCODE);
+            Scanner console = ConsoleReader.getInstance();
+            try {
+                String keyEncode = console.nextLine();
+                while (true) {
+                    if (keyEncode.matches("[0-9]+")) {
+                        if (Integer.parseInt(ValueParameters.MIN_NUMB_CIPHER_CAESAR) <= Integer.parseInt(keyEncode) &&
+                                Integer.parseInt(keyEncode) <= Integer.parseInt(ValueParameters.MAX_NUMB_CIPHER_CAESAR)) {
+                            return keyEncode;
+                        }
+                    }
+                    System.out.println(CommunicationWithUser.REPEAT_INPUT_KEY);
+                    keyEncode = console.nextLine();
+                }
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return ValueParameters.MIN_NUMB_CIPHER_CAESAR;
     }
 
     private String[] getPath(String target) {
