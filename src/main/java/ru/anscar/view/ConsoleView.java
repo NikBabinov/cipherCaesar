@@ -76,7 +76,7 @@ public class ConsoleView implements View {
             try {
                 String keyEncode = console.nextLine();
                 while (true) {
-                    if (keyEncode.matches("[0-9]+")) {
+                    if (keyEncode.matches("\\d+")) {
                         if (Integer.parseInt(ValueParameters.MIN_NUMB_CIPHER_CAESAR) <= Integer.parseInt(keyEncode) &&
                                 Integer.parseInt(keyEncode) <= Integer.parseInt(ValueParameters.MAX_NUMB_CIPHER_CAESAR)) {
                             return keyEncode;
@@ -169,7 +169,6 @@ public class ConsoleView implements View {
         Scanner console = ConsoleReader.getInstance();
         try {
             String target = console.nextLine();
-            System.out.println(target);
             while (true) {
                 if (target.equalsIgnoreCase(ValueParameters.ENCODE_FIlE) ||
                         target.equalsIgnoreCase(ValueParameters.DECODE_FIlE)) {
