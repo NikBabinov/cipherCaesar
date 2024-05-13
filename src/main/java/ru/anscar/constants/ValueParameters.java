@@ -5,7 +5,7 @@ import ru.anscar.entity.CryptoTable;
 public class ValueParameters {
     public static final String SUCCESS = "success";
     public static final String UNKNOWN_VALUE = "unknown";
-    public static final String MAX_NUMB_CIPHER_CAESAR = new CryptoTable().getLengthTable();
+    public static final String MAX_NUMB_CIPHER_CAESAR = new CryptoTable().getMaxNumbKeyKode();
     public static final String MIN_NUMB_CIPHER_CAESAR = "1";
     private static final String one = "1";
     private static final String two = "2";

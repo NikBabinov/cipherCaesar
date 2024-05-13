@@ -17,8 +17,9 @@ public class CryptoTable {
         return INSTANCE;
     }
 
-    public String getLengthTable() {
-        return Integer.toString(tableEncode.length);
+    public String getMaxNumbKeyKode() {
+
+        return (Integer.toString(tableEncode.length -1));
     }
 
     public char[] getTableEncode() {

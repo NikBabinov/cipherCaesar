@@ -40,12 +40,8 @@ public class CommunicationWithUser {
                     Введите: %s для использования brute-force.\s
                     Введите: %S для использования статистического анализа.""", ValueParameters.TYPE_ENCODE_CAESAR,
             ValueParameters.TYPE_ENCODE_BRUTE_FORCE, ValueParameters.TYPE_ENCODE_STATISTICAL_ANALYSIS);
-    public static final String REPEAT_INPUT_TYPE_ENCODING = String.format("""
-                    Проверьте правильность выбора метода дешифровки файла.
-                    Введите: %s для использования шифра Цезаря.\s
-                    Введите: %s для использования brute-force.\s
-                    Введите: %S для использования статистического анализа.""", ValueParameters.TYPE_ENCODE_CAESAR,
-            ValueParameters.TYPE_ENCODE_BRUTE_FORCE, ValueParameters.TYPE_ENCODE_STATISTICAL_ANALYSIS);
+
+    public static final String REPEAT_INPUT_TYPE_ENCODING = "Проверьте правильность выбора";
 
     public static final String SELECT_METHOD_ENCODE_FILE = String.format("""
             Выберите метод кодировки файла:\s
