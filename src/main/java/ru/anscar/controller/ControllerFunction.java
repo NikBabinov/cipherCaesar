@@ -37,7 +37,7 @@ public class ControllerFunction {
             case ValueParameters.VALUE_TYPE_BRUTE_FORCE -> new BrutForceDecode(pathInputFile, pathOutputFile);
             case ValueParameters.VALUE_TYPE_STATISTICAL_ANALYSIS ->
                     new StaticalAnalysisDecode(pathInputFile, pathOutputFile);
-            default -> new CipherCaesarDecode(pathInputFile, pathOutputFile);
+            default -> new CipherCaesarDecode(keyEncode,pathInputFile, pathOutputFile);
         };
     }
 

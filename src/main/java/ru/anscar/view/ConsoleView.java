@@ -163,7 +163,7 @@ public class ConsoleView implements View {
         String decodeFile = Path.of(PathToDefaultFile.DEFAULT_PATH_TO_DECODE_FILE).toAbsolutePath().toString();
         String outputFile = Path.of(PathToDefaultFile.DEFAULT_PATH_TO_OUTPUT_FILE).toAbsolutePath().toString();
 
-        if (target.equalsIgnoreCase(ValueParameters.DECODE_FIlE)) {
+        if (target.equalsIgnoreCase(ValueParameters.TARGET_DECODE_TO_STRING)) {
             return new String[]{encodeFile, outputFile};
         }
         return new String[]{decodeFile, outputFile};
