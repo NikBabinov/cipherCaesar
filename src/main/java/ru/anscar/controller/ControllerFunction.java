@@ -15,8 +15,6 @@ public class ControllerFunction {
         String target = getTarget(parametersEnterUserInView);
         String pathInputFile = getPathToInputFile(parametersEnterUserInView);
         String pathOutputFile = getPathToOutputFile(parametersEnterUserInView);
-
-        System.out.println("getTypeEncode :" + typeEncode + " getTarget: " + target + " getPathInputFile: " + pathInputFile + " getPathOutputFile: " + pathOutputFile + " getKeyEncode" + keyEncode);
         return getTypeFunction(target, typeEncode, pathInputFile, pathOutputFile, keyEncode);
     }
 

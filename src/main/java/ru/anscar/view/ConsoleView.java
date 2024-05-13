@@ -29,6 +29,11 @@ public class ConsoleView implements View {
         return getParametersForUser;
     }
 
+    @Override
+    public void printResultExecutionFunction(String resultFunctionExecution) {
+        System.out.println(resultFunctionExecution);
+    }
+
     private String[] getTypeEncoding(String target) {
         if (target.equalsIgnoreCase(ValueParameters.TARGET_DECODE_TO_STRING)) {
             System.out.println(CommunicationWithUser.SELECT_TYPE_ENCODE_FILE);

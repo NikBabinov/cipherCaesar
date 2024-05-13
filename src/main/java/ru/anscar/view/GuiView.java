@@ -8,4 +8,9 @@ public class GuiView implements View {
     public List<Map<String, String[]>> getParametersForUser() {
         return null;
     }
+
+    @Override
+    public void printResultExecutionFunction(String resultFunctionExecution) {
+
+    }
 }

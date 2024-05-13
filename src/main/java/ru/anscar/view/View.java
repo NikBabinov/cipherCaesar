@@ -6,4 +6,5 @@ import java.util.Map;
 public interface View {
 
     List<Map<String, String[]>> getParametersForUser();
+    void printResultExecutionFunction( String resultFunctionExecution);
 }

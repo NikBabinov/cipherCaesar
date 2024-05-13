@@ -20,6 +20,7 @@ public class Application {
         View controller = controllerView.getViewMode();
         List<Map<String, String[]>> selectUserParameters = controllerView.getParametersEnterUserInView(controller);
         Function function = controllerFunction.getFunction(selectUserParameters);
-        controllerFunction.getResultFunction(function);
+        String resultFunctionExecution = controllerFunction.getResultFunction(function);
+        controller.printResultExecutionFunction(resultFunctionExecution);
     }
 }
