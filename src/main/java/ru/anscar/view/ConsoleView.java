@@ -18,7 +18,7 @@ public class ConsoleView implements View {
 
         String target = getSelectTarget();
         String[] typeAndKeyEncoding = getTypeEncoding(target);
-        String[] pathInputOutput = getPath(target);
+        String[] pathInputOutput = getPath(target,typeAndKeyEncoding);
 
         getFilePathFromUser.put(target, pathInputOutput);
         getTypeEncodingFileFromUser.put(ValueParameters.KEY_TYPE_ENCODE, typeAndKeyEncoding);
@@ -97,17 +97,17 @@ public class ConsoleView implements View {
         return ValueParameters.MIN_NUMB_CIPHER_CAESAR;
     }
 
-    private String[] getPath(String target) {
+    private String[] getPath(String target, String[] typeAndKeyEncoding) {
         System.out.println(CommunicationWithUser.SELECT_DEFAULT_OR_ENTER_PATH_TO_FILE);
         Scanner console = ConsoleReader.getInstance();
         try {
             String selectPath = console.nextLine();
             while (true) {
                 if (selectPath.equalsIgnoreCase(ValueParameters.DEFAULT_PATH)) {
-                    return getDefaultPath(target);
+                    return getDefaultPath(target,typeAndKeyEncoding);
                 }
                 if (selectPath.equalsIgnoreCase(ValueParameters.ENTER_USER_PATH)) {
-                    return getPathFromUser(target);
+                    return getPathFromUser(target,typeAndKeyEncoding);
                 }
                 System.out.println(CommunicationWithUser.REPEAT_INPUT_GET_PATH);
                 selectPath = console.nextLine();
@@ -118,9 +118,17 @@ public class ConsoleView implements View {
         }
     }
 
-    private String[] getPathFromUser(String target) {
+    private String[] getPathFromUser(String target, String[] typeAndKeyEncoding) {
 
-        if (target.equalsIgnoreCase(ValueParameters.DECODE_FIlE)) {
+        if (target.equalsIgnoreCase(ValueParameters.TARGET_DECODE_TO_STRING) &&
+                typeAndKeyEncoding[0].equalsIgnoreCase(ValueParameters.VALUE_TYPE_BRUTE_FORCE)){
+            String encodeFile = createPathEncodeFile();
+            String outputFile = createPathOutputFile();
+            String textForAnalysis = createPathTextForAnalysis();
+            return new String[]{encodeFile, outputFile,textForAnalysis};
+        }
+
+        if (target.equalsIgnoreCase(ValueParameters.TARGET_DECODE_TO_STRING)) {
             String encodeFile = createPathEncodeFile();
             String outputFile = createPathOutputFile();
             return new String[]{encodeFile, outputFile};
@@ -129,6 +137,12 @@ public class ConsoleView implements View {
         String decodeFile = createPathDecodeFile();
         String outputFile = createPathOutputFile();
         return new String[]{decodeFile, outputFile};
+    }
+
+    private String createPathTextForAnalysis() {
+        System.out.println(CommunicationWithUser.INPUT_PATH_TO_ANALYSIS_TEXT_FILE);
+        Scanner console = ConsoleReader.getInstance();
+        return createPath(console);
     }
 
     private String createPathOutputFile() {
@@ -158,12 +172,16 @@ public class ConsoleView implements View {
         }
     }
 
-    private String[] getDefaultPath(String target) {
+    private String[] getDefaultPath(String target, String[] typeAndKeyEncoding) {
         String encodeFile = Path.of(PathToDefaultFile.DEFAULT_PATH_TO_ENCODE_FILE).toAbsolutePath().toString();
         String decodeFile = Path.of(PathToDefaultFile.DEFAULT_PATH_TO_DECODE_FILE).toAbsolutePath().toString();
         String outputFile = Path.of(PathToDefaultFile.DEFAULT_PATH_TO_OUTPUT_FILE).toAbsolutePath().toString();
+        String textForAnalysis = Path.of(PathToDefaultFile.DEFAULT_PATH_TO_ANALYSIS_TEXT_FILE).toAbsolutePath().toString();
 
         if (target.equalsIgnoreCase(ValueParameters.TARGET_DECODE_TO_STRING)) {
+            if(typeAndKeyEncoding[0].equalsIgnoreCase(ValueParameters.VALUE_TYPE_BRUTE_FORCE)){
+                return new String[]{encodeFile, outputFile,textForAnalysis};
+            }
             return new String[]{encodeFile, outputFile};
         }
         return new String[]{decodeFile, outputFile};

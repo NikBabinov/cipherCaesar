@@ -31,7 +31,9 @@ public class CommunicationWithUser {
 
     public static final String INPUT_PATH_TO_DECODE_FILE = "Введите путь до декодированного файла";
 
-    public static final String INPUT_PATH_TO_ENCODE_FILE = "Введите путь до декодированного файла";
+    public static final String INPUT_PATH_TO_ENCODE_FILE = "Введите путь до кодированного файла";
+
+    public static final String INPUT_PATH_TO_ANALYSIS_TEXT_FILE = "Введите путь до файла с образцом текста автора кодированного файла";
 
     public static final String INPUT_PATH_TO_OUTPUT_FILE = "Введите путь до файла в который записать результат";
     public static final String SELECT_TYPE_ENCODE_FILE = String.format("""
@@ -56,4 +58,6 @@ public class CommunicationWithUser {
                     пожалуйста проверьте правильность ввода ключа:
                     ключ должен соответствовать диапазону от %s до %s""", ValueParameters.MIN_NUMB_CIPHER_CAESAR,
             ValueParameters.MAX_NUMB_CIPHER_CAESAR);
+
+    public static final String SUCCESS = "Программа успешно завершила свою работу!";
 }

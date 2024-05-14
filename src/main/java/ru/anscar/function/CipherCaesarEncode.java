@@ -1,5 +1,6 @@
 package ru.anscar.function;
 
+import ru.anscar.constants.CommunicationWithUser;
 import ru.anscar.constants.ValueParameters;
 import ru.anscar.entity.CryptoTable;
 
@@ -28,7 +29,7 @@ public class CipherCaesarEncode implements Function {
     private String writeInFile(char[] encodeText,String pathOutputFile) {
         try(FileWriter writer = new FileWriter(pathOutputFile)){
             writer.write(encodeText);
-            return ValueParameters.SUCCESS;
+            return CommunicationWithUser.SUCCESS;
         }catch (Exception e){
             throw new RuntimeException(e);
         }
