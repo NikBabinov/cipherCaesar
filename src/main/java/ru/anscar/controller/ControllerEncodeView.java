@@ -5,15 +5,23 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import ru.anscar.constants.PathToDefaultFile;
+import ru.anscar.constants.ValueParameters;
+import ru.anscar.view.GuiView;
 
 public class ControllerEncodeView {
+    GuiView guiView = new GuiView();
 
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
 
     @FXML // URL location of the FXML file that was given to the FXMLLoader
     private URL location;
+
+    @FXML
+    private TextArea textAreaInput;
 
     @FXML // fx:id="buttonChangeTypeCode"
     private Button buttonChangeTypeCode; // Value injected by FXMLLoader
@@ -41,14 +49,16 @@ public class ControllerEncodeView {
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
+        textInputPath.appendText(guiView.getDefaultPathEncodeFile());
+        textOutputPath.appendText(guiView.getDefaultPathOutputFile());
+        textInputKey.appendText(ValueParameters.DEFAULT_KEY_CODE);
+        textAreaInput.appendText(guiView.getTextDecodeFile());
+
         assert buttonChangeTypeCode != null : "fx:id=\"buttonChangeTypeCode\" was not injected: check your FXML file 'encodeScene.fxml'.";
         assert buttonCodeFile != null : "fx:id=\"buttonCodeFile\" was not injected: check your FXML file 'encodeScene.fxml'.";
         assert labelInputKey != null : "fx:id=\"labelInputKey\" was not injected: check your FXML file 'encodeScene.fxml'.";
         assert labelInputPath != null : "fx:id=\"labelInputPath\" was not injected: check your FXML file 'encodeScene.fxml'.";
         assert labelOutputPath != null : "fx:id=\"labelOutputPath\" was not injected: check your FXML file 'encodeScene.fxml'.";
-        assert textInputKey != null : "fx:id=\"textInputKey\" was not injected: check your FXML file 'encodeScene.fxml'.";
-        assert textInputPath != null : "fx:id=\"textInputPath\" was not injected: check your FXML file 'encodeScene.fxml'.";
-        assert textOutputPath != null : "fx:id=\"textOutputPath\" was not injected: check your FXML file 'encodeScene.fxml'.";
 
     }
 
