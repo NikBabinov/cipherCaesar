@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="712.0" prefWidth="910.0" styleClass="anchorPane" stylesheets="@../styless/styless.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.anscar.controller.ControllerEncodeView">
+<AnchorPane id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="712.0" prefWidth="910.0" styleClass="anchorPane" stylesheets="@../styless/styless.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane id="wrapPane" layoutX="173.0" layoutY="179.0" prefHeight="200.0" prefWidth="200.0" styleClass="wrapPane" stylesheets="@../styless/styless.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -26,7 +26,7 @@
                </font>
             </Label>
             <TextArea id="textAreaInput" fx:id="textAreaInput" layoutX="466.0" layoutY="82.0" prefHeight="500.0" prefWidth="437.0" styleClass="textAreaInput" stylesheets="@../styless/styless.css" />
-            <Button id="buttonCodeFile" fx:id="buttonCodeFile" layoutX="804.0" layoutY="598.0" mnemonicParsing="false" styleClass="buttonCodeFile" stylesheets="@../styless/styless.css" text="кодировать" textFill="WHITE">
+            <Button id="buttonCodeFile" fx:id="buttonCodeFile" layoutX="801.0" layoutY="599.0" mnemonicParsing="false" styleClass="buttonCodeFile" stylesheets="@../styless/styless.css" text="кодировать" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="CLOSED_HAND" />
                </cursor>
@@ -40,26 +40,29 @@
                <font>
                   <Font name="System Italic" size="15.0" />
                </font></TextField>
-            <Label id="labelOutputPath" fx:id="labelOutputPath" layoutX="34.0" layoutY="200.0" styleClass="labelOutputPath" stylesheets="@../styless/styless.css" text="Введите путь до файла для сохранения результата">
+            <Label id="labelOutputPath" fx:id="labelOutputPath" layoutX="35.0" layoutY="274.0" styleClass="labelOutputPath" stylesheets="@../styless/styless.css" text="Введите путь до файла для сохранения результата">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <TextField id="textOutputPath" fx:id="textOutputPath" layoutX="83.0" layoutY="242.0" prefHeight="30.0" prefWidth="353.0" styleClass="textOutputPath" stylesheets="@../styless/styless.css">
+            <TextField id="textOutputPath" fx:id="textOutputPath" layoutX="83.0" layoutY="309.0" prefHeight="30.0" prefWidth="353.0" styleClass="textOutputPath" stylesheets="@../styless/styless.css">
                <font>
                   <Font size="15.0" />
                </font>
             </TextField>
-            <TextField id="textInputKey" fx:id="textInputKey" alignment="CENTER" layoutX="326.0" layoutY="341.0" prefHeight="30.0" prefWidth="38.0" styleClass="textInputKey" stylesheets="@../styless/styless.css">
+            <TextField id="textInputKey" fx:id="textInputKey" alignment="CENTER" layoutX="345.0" layoutY="468.0" prefHeight="30.0" prefWidth="38.0" styleClass="textInputKey" stylesheets="@../styless/styless.css">
                <font>
                   <Font size="15.0" />
                </font></TextField>
-            <Label id="labelInputKey" fx:id="labelInputKey" layoutX="34.0" layoutY="296.0" styleClass="labelInputKey" stylesheets="@../styless/styless.css" text="Введите цифровой ключ для шифрования">
+            <Label id="labelInputKey" fx:id="labelInputKey" layoutX="53.0" layoutY="423.0" styleClass="labelInputKey" stylesheets="@../styless/styless.css" text="Введите цифровой ключ для шифрования">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Button id="buttonChangeTypeCode" fx:id="buttonChangeTypeCode" layoutX="201.0" layoutY="600.0" mnemonicParsing="false" styleClass="buttonChangeTypeCode" stylesheets="@../styless/styless.css" text="Перейти в режим раскодирования файла" textFill="WHITE" />
+            <Button id="buttonChangeTypeCode" fx:id="buttonChangeTypeCode" layoutX="200.0" layoutY="653.0" mnemonicParsing="false" styleClass="buttonChangeTypeCode" stylesheets="@../styless/styless.css" text="Перейти в режим раскодирования файла" textFill="WHITE" />
+            <Button id="buttonChangeTypeCode" fx:id="buttonGetOutFileText" layoutX="240.0" layoutY="356.0" mnemonicParsing="false" styleClass="buttonChangeTypeCode" stylesheets="@../styless/styless.css" text="показать содержимое файла" textFill="WHITE" />
+            <Button id="buttonGetInputFileText" fx:id="buttonGetInputFileText" layoutX="240.0" layoutY="196.0" mnemonicParsing="false" styleClass="buttonGetInputFileText" stylesheets="@../styless/styless.css" text="показать содержимое файла" textFill="WHITE" />
+            <Button id="saveFileToEncode" fx:id="saveFileToEncode" layoutX="475.0" layoutY="599.0" mnemonicParsing="false" styleClass="saveFileToEncode" stylesheets="@../styless/styless.css" text="сохранить текст в файл кодировки" textFill="WHITE" />
          </children></Pane>
    </children>
 </AnchorPane>

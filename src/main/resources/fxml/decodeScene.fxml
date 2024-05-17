@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="712.0" prefWidth="910.0" styleClass="anchorPane" stylesheets="@../styless/styless.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <Pane id="wrapPane" layoutX="173.0" layoutY="179.0" prefHeight="200.0" prefWidth="200.0" styleClass="wrapPane" stylesheets="@../styless/styless.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Label id="labelHeader" layoutX="14.0" layoutY="31.0" styleClass="labelHeader" stylesheets="@../styless/styless.css" text="Вы находитесь в режиме кодирования файла">
+                    <font>
+                        <Font name="Arial Italic" size="18.0" />
+                    </font>
+                </Label>
+                <TextArea id="textAreaInput" fx:id="textAreaInput" layoutX="466.0" layoutY="82.0" prefHeight="500.0" prefWidth="437.0" styleClass="textAreaInput" stylesheets="@../styless/styless.css" />
+                <Button id="buttonCodeFile" fx:id="buttonCodeFile" layoutX="778.0" layoutY="598.0" mnemonicParsing="false" styleClass="buttonCodeFile" stylesheets="@../styless/styless.css" text="раскодировать" textFill="WHITE">
+                    <cursor>
+                        <Cursor fx:constant="CLOSED_HAND" />
+                    </cursor>
+                </Button>
+                <Label id="labelInputPath" fx:id="labelInputPath" layoutX="34.0" layoutY="112.0" styleClass="labelInputPath" stylesheets="@../styless/styless.css" text="Выберите путь до декодируемого файла">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Label>
+                <TextField id="textInputPath" fx:id="textInputPath" layoutX="83.0" layoutY="148.0" prefHeight="30.0" prefWidth="353.0" styleClass="textInputPath" stylesheets="@../styless/styless.css">
+                    <font>
+                        <Font name="System Italic" size="15.0" />
+                    </font></TextField>
+                <Label id="labelOutputPath" fx:id="labelOutputPath" layoutX="35.0" layoutY="274.0" styleClass="labelOutputPath" stylesheets="@../styless/styless.css" text="Введите путь до файла для сохранения результата">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Label>
+                <TextField id="textOutputPath" fx:id="textOutputPath" layoutX="83.0" layoutY="309.0" prefHeight="30.0" prefWidth="353.0" styleClass="textOutputPath" stylesheets="@../styless/styless.css">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </TextField>
+                <TextField id="textInputKey" fx:id="textInputKey" alignment="CENTER" layoutX="345.0" layoutY="468.0" prefHeight="30.0" prefWidth="38.0" styleClass="textInputKey" stylesheets="@../styless/styless.css">
+                    <font>
+                        <Font size="15.0" />
+                    </font></TextField>
+                <Label id="labelInputKey" fx:id="labelInputKey" layoutX="53.0" layoutY="423.0" styleClass="labelInputKey" stylesheets="@../styless/styless.css" text="Введите цифровой ключ для шифрования">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Label>
+                <Button id="buttonChangeTypeCode" fx:id="buttonChangeTypeCode" layoutX="629.0" layoutY="666.0" mnemonicParsing="false" styleClass="buttonChangeTypeCode" stylesheets="@../styless/styless.css" text="Перейти в режим кодирования файла" textFill="WHITE" />
+                <Button id="buttonChangeTypeCode" fx:id="buttonGetOutFileText" layoutX="240.0" layoutY="356.0" mnemonicParsing="false" styleClass="buttonChangeTypeCode" stylesheets="@../styless/styless.css" text="показать содержимое файла" textFill="WHITE" />
+                <Button id="buttonGetInputFileText" fx:id="buttonGetInputFileText" layoutX="240.0" layoutY="196.0" mnemonicParsing="false" styleClass="buttonGetInputFileText" stylesheets="@../styless/styless.css" text="показать содержимое файла" textFill="WHITE" />
+            <Label layoutX="174.0" layoutY="539.0" text="Жми кнопку если не знаешь ключ">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Button id="buttonBruteForce" fx:id="buttonBruteForce" layoutX="358.0" layoutY="573.0" mnemonicParsing="false" styleClass="buttonBruteForce" stylesheets="@../styless/styless.css" text="Brute-force" textFill="WHITE" />
+            <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="-1.0" layoutY="514.0">
+               <image>
+                  <Image url="@../images/unlockpng.png" />
+               </image>
+            </ImageView>
+            </children></Pane>
+    </children>
+</AnchorPane>
